@@ -171,17 +171,13 @@ void CSocketClientDlg::OnBnClickedButton1()
 	phead.type = MSG_LOGIN;
 	phead.ContentLength = 9;
 	memset(phead.from_user, 0, sizeof(phead.from_user));
-	phead.pList.AddTail((void*)"test1");
-	phead.pList.AddTail((void*)"test2");
-	phead.pList.AddTail((void *)"test3");
+	memset(phead.to_user, 0, sizeof(phead.to_user));
 	strcpy_s(phead.from_user, "");
+	strcpy_s(phead.to_user, "");
 	//phead.from_user=
 	char szRecValue[1024] = { 0 };
 	asocket.Send(&phead, sizeof(phead));
 	asocket.Send(a, 9);
-	asocket.Receive((void *)szRecValue, 1024);
-	CString c(szRecValue);
-	GetDlgItem(xianshi)->SetWindowTextW(c);
 	asocket.Close();
 }
 

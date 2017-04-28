@@ -9,5 +9,5 @@ typedef struct tagHeader
 	int type;
 	int ContentLength;
 	char from_user[20];
-	CPtrList pList;
+	char to_user[20];
 }  Header;

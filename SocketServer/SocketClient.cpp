@@ -31,9 +31,9 @@ void CSocketClient::OnReceive(int nErrorCode)
 	Receive(pHead, nlen);
 	head.type = ((Header*)pHead)->type;
 	head.ContentLength = ((Header*)pHead)->ContentLength;
-	/*memset(head.to_user, 0, sizeof(head.to_user));
-	strcpy_s(head.to_user, ((Header*)pHead)->to_user);*/
-	head.pList.AddTail(&(((Header*)pHead)->pList));
+	memset(head.to_user, 0, sizeof(head.to_user));
+	strcpy_s(head.to_user, ((Header*)pHead)->to_user);
+
 	memset(head.from_user, 0, sizeof(head.from_user));
 	strcpy_s(head.from_user, ((Header*)pHead)->from_user);
 	delete pHead;
@@ -63,12 +63,9 @@ void CSocketClient::OnReceive(int nErrorCode)
 
 void CSocketClient::OnLogoIN(char * buff, int nlen, char from_user[20])
 {
-	Header head;
+	/*Header head;
 	head.type = MSG_SEND;
 	head.ContentLength = nlen;
-	strcpy_s(head.from_user, from_user);
-   CSocketClient temp;
+	strcpy_s(head.from_user, from_user);*/
 
-	//temp.Send(&head, sizeof(Header));
-	temp.Send(buff, nlen);
 }
